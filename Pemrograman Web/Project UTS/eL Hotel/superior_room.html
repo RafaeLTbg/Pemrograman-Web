@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Superior Room - eL Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+      background-image: url('img/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .info-section {
+      background-color: #2c3e50;
+      padding: 40px 20px;
+    }
+
+    .info-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .info-box {
+      background-color: #687b8e;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .info-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .info-box h3 {
+      margin-top: 15px;
+      font-size: 22px;
+    }
+
+    .info-box p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .info-box ul {
+      list-style: disc;
+      text-align: left;
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    .price {
+      font-size: 20px;
+      color: #4CAF50;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .btn-primary {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .btn-primary:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="menu">
+    <label>eL Hotel</label>
+    <ul class="navbar">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Tentang Kami</a>
+        <ul class="dropdown">
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="fasilitas.html">Fasilitas</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Room</a>
+        <ul class="dropdown">
+          <li><a href="standard_room.html">Standard Room</a></li>
+          <li><a href="superior_room.html" class="active">Superior Room</a></li>
+          <li><a href="deluxe_room.html">Deluxe Room</a></li>
+          <li><a href="suite_room.html">Suite Room</a></li>
+          <li><a href="presidential_suite_room.html">Presidential Suite Room</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Event</a>
+        <ul class="dropdown">
+          <li><a href="royal_hall.html">Royal Hall</a></li>
+          <li><a href="aston_hall.html">Aston Hall</a></li>
+          <li><a href="festive_hall.html">Festive Hall</a></li>
+          <li><a href="arunika_hall.html">Arunika Hall</a></li>
+          <li><a href="emerald_hall.html">Emerald Hall</a></li>
+          <li><a href="luminous_hall.html">Luminous Hall</a></li>
+        </ul>
+      </li>
+      <li><a href="location.html">Lokasi</a></li>
+      <li><a href="profile-programmer.html">Profil Programmer</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Superior Room</h1>
+      <p>Nikmati ruang lebih luas dengan kenyamanan ekstra</p>
+    </div>
+  </header>
+
+  <!-- Room Info Section -->
+  <section class="info-section">
+    <h2>Detail Superior Room</h2>
+    <div class="info-boxes">
+      <div class="info-box">
+        <img src="img/superior.jpg" alt="Superior Room" />
+        <h3>Fasilitas Kamar</h3>
+        <p>Superior Room dirancang untuk tamu yang menginginkan ruang lebih lega dan fasilitas lebih lengkap. Tersedia dengan pemandangan kota dan tempat tidur king size.</p>
+        <ul>
+          <li>Ukuran kamar: 30 m²</li>
+          <li>AC dan Smart TV</li>
+          <li>Pemandangan kota Batam</li>
+          <li>Mini bar & set teh/kopi</li>
+          <li>Wi-Fi dan sarapan gratis</li>
+        </ul>
+        <div class="price">Harga: Rp2.500.000 / malam</div>
+        <a href="booking_form.html?kamar=Superior%20Room&harga=650000" class="btn-primary">Pesan Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 eL Hotel. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

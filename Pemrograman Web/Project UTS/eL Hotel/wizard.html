@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Wizard Reservasi | eL Hotel</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background: url('img/g2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #003366;
+    }
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    .step {
+      display: none;
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      margin: 10px 5px 0 0;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0066cc;
+    }
+
+    label {
+      display: block;
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .room-option {
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      transition: box-shadow 0.3s;
+    }
+
+    .room-option:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    .room-option img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .room-option h4 {
+      margin: 0 0 5px 0;
+    }
+
+    .description ul {
+      margin: 5px 0 0;
+      padding-left: 20px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Reservasi Sekarang</h2>
+
+<div id="step1" class="step active">
+  <h3>1. Pilih Jenis Pemesanan</h3>
+  <label><input type="radio" name="tipe" value="kamar"> Kamar</label>
+  <label><input type="radio" name="tipe" value="aula"> Aula</label>
+  <button class="btn" onclick="nextStep()">Lanjut</button>
+</div>
+
+<!-- Step 2 for Room Type Selection -->
+<div id="step2_kamar" class="step">
+  <h3>2. Pilih Tipe Kamar</h3>
+  <label><input type="radio" name="tipe_kamar" value="single"> Single Bed</label>
+  <label><input type="radio" name="tipe_kamar" value="double"> Double Bed</label>
+  <label><input type="radio" name="tipe_kamar" value="luas"> Lebih Luas</label>
+  <button class="btn" onclick="goBack('step2_kamar', 'step1')">Kembali</button>
+  <button class="btn" onclick="nextStep2TipeKamar()">Lanjut</button>
+</div>
+
+<!-- Step 3 for Room Selection -->
+<div id="step3_kamar" class="step">
+  <h3>3. Pilih Jenis Kamar</h3>
+  <div id="room-options"></div>
+  <button class="btn" onclick="goBack('step3_kamar', 'step2_kamar')">Kembali</button>
+</div>
+
+<!-- Step 2 for Event Type Selection -->
+<div id="step2_aula" class="step">
+  <h3>2. Pilih Jenis Acara</h3>
+  <label><input type="radio" name="jenis_acara" value="1"> Pernikahan / Konferensi</label>
+  <label><input type="radio" name="jenis_acara" value="2"> Seminar / Expo</label>
+  <label><input type="radio" name="jenis_acara" value="3"> Pesta / Wisuda / Budaya</label>
+  <label><input type="radio" name="jenis_acara" value="4"> Dinner / Acara Eksklusif</label>
+  <button class="btn" onclick="goBack('step2_aula', 'step1')">Kembali</button>
+  <button class="btn" onclick="nextStep2Aula()">Lanjut</button>
+</div>
+
+<!-- Step 3 for Aula Selection -->
+<div id="step3_aula" class="step">
+  <h3>3. Pilih Aula</h3>
+  <div id="pilihan_aula"></div>
+  <button class="btn" onclick="goBack('step3_aula', 'step2_aula')">Kembali</button>
+</div>
+
+<script>
+  function nextStep() {
+    const tipe = document.querySelector('input[name="tipe"]:checked');
+    if (!tipe) return alert("Silakan pilih jenis pemesanan terlebih dahulu.");
+    document.getElementById('step1').classList.remove('active');
+    if (tipe.value === 'kamar') {
+      document.getElementById('step2_kamar').classList.add('active');
+    } else {
+      document.getElementById('step2_aula').classList.add('active');
+    }
+  }
+
+  function nextStep2TipeKamar() {
+    const tipeKamar = document.querySelector('input[name="tipe_kamar"]:checked');
+    if (!tipeKamar) return alert("Silakan pilih tipe kamar.");
+    document.getElementById('step2_kamar').classList.remove('active');
+    document.getElementById('step3_kamar').classList.add('active');
+    showRoomOptions(tipeKamar.value);
+  }
+
+  function showRoomOptions(tipe) {
+    const roomOptions = {
+      single: [
+        {
+          name: 'Standard Room',
+          img: 'img/standard2.jpg',
+          description: 'Standard Room kami menyediakan tempat tidur queen size, AC, TV layar datar, kamar mandi pribadi, dan Wi-Fi gratis. Dirancang untuk kenyamanan maksimal dengan desain modern dan bersih.',
+          details: ['Ukuran kamar: 24m²', 'AC dan TV LED', 'Sarapan untuk 2 orang', 'Wi-Fi gratis'],
+          price: 'Rp 1.000.000 / malam'
+        }
+      ],
+      double: [
+        {
+          name: 'Superior Room',
+          img: 'img/superior.jpg',
+          description: 'Superior Room dirancang untuk tamu yang menginginkan ruang lebih lega dan fasilitas lebih lengkap. Tersedia dengan pemandangan kota dan tempat tidur king size.',
+          details: ['AC dan Smart TV', 'Pemandangan kota Batam', 'Mini bar & set teh/kopi', 'Wi-Fi dan sarapan gratis'],
+          price: 'Rp 2.500.000 / malam'
+        },
+        {
+          name: 'Deluxe Room',
+          img: 'img/deluxe_room.jpg',
+          description: 'Deluxe Room menghadirkan pengalaman menginap eksklusif dengan desain modern dan fasilitas premium untuk memenuhi semua kebutuhan Anda.',
+          details: ['Tempat tidur king size', 'TV 50", Netflix & YouTube', 'Bathtub & shower terpisah', 'Wi-Fi super cepat dan sarapan lengkap'],
+          price: 'Rp 3.500.000 / malam'
+        }
+      ],
+      luas: [
+        {
+          name: 'Suite Room',
+          img: 'img/suite.jpg',
+          description: 'Suite Room memberikan kenyamanan maksimal dengan ruang tamu terpisah, cocok untuk keluarga atau tamu VIP yang menginginkan privasi dan pelayanan terbaik.',
+          details: ['Ruang tamu & tempat tidur king size', 'Mini bar dan pantry kecil', 'Bathtub dan shower kaca', 'Layanan room service 24 jam'],
+          price: 'Rp 13.000.000 / malam'
+        },
+        {
+          name: 'Presidential Suite',
+          img: 'img/presidential_suite.jpg',
+          description: 'Presidential Suite Room menghadirkan akomodasi terbaik dengan ruang yang sangat luas, layanan VIP, dan interior mewah untuk pengalaman menginap kelas dunia.',
+          details: ['Kamar tidur utama dengan king bed premium', 'Ruang tamu, ruang makan, dan dapur mini', 'Minibar', 'Jacuzzi pribadi & sauna', 'Butler service eksklusif'],
+          price: 'Rp 25.000.000 / malam'
+        }
+      ]
+    };
+
+    const container = document.getElementById('room-options');
+    container.innerHTML = '';
+    const selectedRooms = roomOptions[tipe];
+    selectedRooms.forEach(room => {
+      const roomOption = document.createElement('div');
+      roomOption.className = 'room-option';
+      roomOption.innerHTML = `
+        <img src="${room.img}" alt="${room.name}">
+        <div>
+          <h4>${room.name}</h4>
+          <p>${room.description}</p>
+          <div class="description">
+            <ul>
+              ${room.details.map(detail => `<li>${detail}</li>`).join('')}
+            </ul>
+          </div>
+          <p class="price">${room.price}</p>
+          <button class="btn" onclick="window.location.href='booking_form.html?jenis=${encodeURIComponent(room.name)}'">Pilih ${room.name}</button>
+        </div>
+      `;
+      container.appendChild(roomOption);
+    });
+  }
+
+  function nextStep2Aula() {
+    const jenis = document.querySelector('input[name="jenis_acara"]:checked');
+    if (!jenis) return alert("Silakan pilih jenis acara.");
+    document.getElementById('step2_aula').classList.remove('active');
+    document.getElementById('step3_aula').classList.add('active');
+
+    const pilihan = {
+      1: [{
+        name: 'Royal Hall',
+        img: 'img/weddiing.jpg',
+        description: 'Aula besar ideal untuk acara pernikahan dan konferensi.',
+        details: ['Menyediakan suasana elegan dan romantis untuk hari istimewa Anda.', 'Dilengkapi dengan peralatan presentasi dan fasilitas untuk konferensi internasional.', 'Ruang yang luas dan mewah untuk acara makan malam resmi dan bergaya.'],
+        price: 'Rp 40.000.000 / hari'
+      }],
+      2: [
+        {
+          name: 'Aston Hall',
+          img: 'img/seminar.jpg',
+          description: 'Hall cocok untuk seminar dan expo.',
+          details: ['Ruang serbaguna yang cocok untuk berbagai kebutuhan acara besar maupun kecil.', 'Cocok untuk ulang tahun, gathering keluarga, dan pertemuan sosial lainnya.', 'Area luas dan fleksibel untuk pameran produk dan event promosi perusahaan.'],
+          price: 'Rp 12.500.000 / hari'
+        },
+        {
+          name: 'Emerald Hall',
+          img: 'img/konser.jpg',
+          description: 'Hall modern untuk konser dan expo.',
+          details: ['Ruang serbaguna yang cocok untuk acara mewah, konser, dan pameran internasional.', 'Tempat yang sempurna untuk konser dan acara musik dengan akustik terbaik.', 'Fasilitas lengkap untuk pameran, acara promosi, dan expo internasional.'],
+          price: 'Rp 8.500.000 / hari'
+        }
+      ],
+      3: [
+        {
+          name: 'Festive Hall',
+          img: 'img/ulangtahun.jpg',
+          description: 'Cocok untuk pesta dan acara budaya.',
+          details: ['Ruang yang meriah dan nyaman untuk merayakan ulang tahun bersama orang tersayang.', 'Suasana ceria dan semangat untuk merayakan pencapaian kelulusan Anda.', 'Cocok untuk pertunjukan seni, budaya lokal, dan acara komunitas yang berwarna.'],
+          price: 'Rp 10.000.000 / hari'
+        },
+        {
+          name: 'Arunika Hall',
+          img: 'img/budaya.jpg',
+          description: 'Nuansa hangat untuk acara budaya.',
+          details: ['Ideal untuk perayaan keluarga seperti pertunangan, ulang tahun, atau reuni.', 'Ruang tenang dan nyaman untuk seminar, pelatihan, atau presentasi resmi.','Privasi dan kenyamanan tinggi untuk rapat bisnis atau gathering terbatas.'],
+          price: 'Rp 7.500.000 / hari'
+        }
+      ],
+      4: [{
+        name: 'Luminous Hall',
+        img: 'img/dinner.jpg',
+        description: 'Hall mewah untuk dinner eksklusif.',
+        details: ['Menghadirkan suasana glamor dan elegan untuk hari spesial Anda.', 'Tempat yang sempurna untuk acara makan malam eksklusif dan resmi.','Ruang yang luas dan fleksibel untuk pameran dan promosi produk.'],
+        price: 'Rp 8.500.000 / hari'
+      }]
+    };
+
+    const container = document.getElementById('pilihan_aula');
+    container.innerHTML = '';
+    const daftarAula = pilihan[jenis.value];
+
+    daftarAula.forEach(aula => {
+      const aulaOption = document.createElement('div');
+      aulaOption.className = 'room-option';
+      aulaOption.innerHTML = `
+        <img src="${aula.img}" alt="${aula.name}">
+        <div>
+          <h4>${aula.name}</h4>
+          <p>${aula.description}</p>
+          <div class="description">
+            <ul>
+              ${aula.details.map(detail => `<li>${detail}</li>`).join('')}
+            </ul>
+          </div>
+          <p class="price">${aula.price}</p>
+          <button class="btn" onclick="window.location.href='booking_form.html?jenis=${encodeURIComponent(aula.name)}'">Pilih ${aula.name}</button>
+        </div>
+      `;
+      container.appendChild(aulaOption);
+    });
+  }
+
+  function goBack(currentStepId, backToStepId) {
+    document.getElementById(currentStepId).classList.remove('active');
+    document.getElementById(backToStepId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>

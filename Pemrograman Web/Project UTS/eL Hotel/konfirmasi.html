@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konfirmasi Pemesanan | eL Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #34495e;
+      border-radius: 8px;
+    }
+    h2 { text-align: center; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 10px; }
+    .button-area {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Konfirmasi Pemesanan Anda</h2>
+    <ul id="detail-pemesanan"></ul>
+    <div class="button-area">
+      <a id="btnKonfirmasi" class="btn">Konfirmasi</a>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const detailList = document.getElementById('detail-pemesanan');
+    const btn = document.getElementById('btnKonfirmasi');
+
+    // Menampilkan semua parameter dari URL sebagai daftar
+    params.forEach((value, key) => {
+      const item = document.createElement('li');
+      item.innerHTML = `<strong>${key}:</strong> ${value}`;
+      detailList.appendChild(item);
+    });
+
+    // Redirect ke halaman berhasil_booking.html dengan data yang sama
+    btn.href = "reservasi_berhasil.html?" + params.toString();
+  </script>
+</body>
+</html>

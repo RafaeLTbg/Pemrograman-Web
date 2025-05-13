@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant - eL Hotel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigasi Menu -->
+  <nav class="menu">
+    <label>eL Hotel</label>
+    <ul class="navbar">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Tentang Kami</a>
+        <ul class="dropdown">
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="fasilitas.html">Fasilitas</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </li>
+    
+      <li><a href="#">Room</a>
+        <ul class="dropdown">
+          <li><a href="standard_room.html">Standard Room</a></li>
+          <li><a href="superior_room.html">Superior Room</a></li>
+          <li><a href="deluxe_room.html">Deluxe Room</a></li>
+          <li><a href="suite_room.html">Suite Room</a></li>
+          <li><a href="presidential_suite_room.html">Presidential Suite Room</a></li>
+        </ul>
+      </li>
+    
+      <li><a href="#">Event</a>
+        <ul class="dropdown">
+          <li><a href="royal_hall.html">Royal Hall</a></li>
+          <li><a href="aston_hall.html">Aston Hall</a></li>
+          <li><a href="festive_hall.html">Festive Hall</a></li>
+          <li><a href="arunika_hall.html">Arunika Hall</a></li>
+          <li><a href="emerald_hall.html">Emerald Hall</a></li>
+          <li><a href="luminous_hall.html">Luminous Hall</a></li>
+        </ul>
+      </li>
+    
+      <li><a href="location.html">Lokasi</a></li>
+      <li><a href="profile-programmer.html">Profil Programmer</a></li>
+    </ul>
+  </nav>
+
+  <!-- Konten Restaurant -->
+  <div class="container">
+    <h1 class="fade-in">Restoran eL Hotel</h1>
+  
+    <!-- Grup Gambar Restoran -->
+    <div class="restaurant-group fade-in">
+      <div class="restaurant-row">
+        <img src="img/resto3.jpg" alt="Restoran 1" class="restaurant-image">
+        <img src="img/resto2.jpg" alt="Restoran 2" class="restaurant-image">
+        <img src="img/resto1.jpg" alt="Restoran 3" class="restaurant-image">
+        
+
+
+      </div>
+      <p class="restaurant-description">
+        Nikmati pengalaman kuliner terbaik di eL Hotel Resto, di mana cita rasa lokal dan internasional berpadu dalam suasana elegan dan nyaman. Ruang makan modern dengan pemandangan kota, cocok untuk segala momen spesial.
+      </p>
+    </div>
+  
+    <!-- Grup Gambar Buffet -->
+    <div class="restaurant-group fade-in">
+      <div class="restaurant-row">
+        <img src="img/buffet1.jpg" alt="Buffet 1" class="restaurant-image">
+        <img src="img/buffet2.jpg" alt="Buffet 2" class="restaurant-image">
+      </div>
+      <p class="restaurant-description">
+        Tersedia pilihan buffet lengkap untuk sarapan, makan siang, dan malam setiap hari, dengan menu yang selalu segar dan variatif.
+      </p>
+    </div>
+  </div>
+  
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 eL Hotel. All rights reserved.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function() {
+      const items = document.querySelectorAll('.restaurant-item');
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('show');
+        }, index * 300);
+      });
+    });
+  </script>
+</body>
+</html>

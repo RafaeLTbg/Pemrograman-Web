@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kontak | eL Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Kontainer tombol untuk WhatsApp dan Email agar sejajar */
+    .contact-buttons {
+      display: flex;
+      gap: 20px; /* Memberikan jarak antar tombol */
+      margin-top: 20px; /* Menambahkan jarak atas untuk tombol */
+      justify-content: center; /* Memastikan tombol berada di tengah */
+    }
+    
+    .btn-primary {
+      background-color: #4CAF50; /* Warna latar belakang tombol */
+      color: white; /* Warna teks tombol */
+      padding: 10px 20px; /* Ukuran tombol */
+      text-align: center; /* Mengatur teks di tengah */
+      border-radius: 5px; /* Membuat sudut tombol melengkung */
+      text-decoration: none; /* Menghilangkan garis bawah */
+      font-size: 16px; /* Ukuran font */
+    }
+
+    .btn-primary:hover {
+      background-color: #45a049; /* Warna latar tombol saat hover */
+    }
+
+    /* Konten kontak */
+    .contact-info {
+      list-style-type: none;
+      padding: 0;
+      font-size: 18px;
+    }
+    .contact-info li {
+      margin-bottom: 10px;
+    }
+    
+    .hero {
+      background-image: url('img/hero-bg.jpg'); /* Gambar latar belakang hero */
+      background-size: cover;
+      background-position: center;
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    
+    .info-section {
+      background-color: #f4f4f4;
+      padding: 40px 20px;
+    }
+
+    .info-boxes {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+    }
+
+    .info-box {
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 30%;
+    }
+
+    .info-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .info-box h3 {
+      margin-top: 15px;
+      font-size: 22px;
+    }
+
+    .info-box p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="menu">
+    <label>eL Hotel</label>
+    <ul class="navbar">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Tentang Kami</a>
+        <ul class="dropdown">
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="fasilitas.html">Fasilitas</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </li>
+    
+      <li><a href="#">Room</a>
+        <ul class="dropdown">
+          <li><a href="standard_room.html">Standard Room</a></li>
+          <li><a href="superior_room.html">Superior Room</a></li>
+          <li><a href="deluxe_room.html">Deluxe Room</a></li>
+          <li><a href="suite_room.html">Suite Room</a></li>
+          <li><a href="presidential_suite_room.html">Presidential Suite Room</a></li>
+        </ul>
+      </li>
+    
+      <li><a href="#">Event</a>
+        <ul class="dropdown">
+          <li><a href="royal_hall.html">Royal Hall</a></li>
+          <li><a href="aston_hall.html">Aston Hall</a></li>
+          <li><a href="festive_hall.html">Festive Hall</a></li>
+          <li><a href="arunika_hall.html">Arunika Hall</a></li>
+          <li><a href="emerald_hall.html">Emerald Hall</a></li>
+          <li><a href="luminous_hall.html">Luminous Hall</a></li>
+        </ul>
+      </li>
+    
+      <li><a href="location.html">Lokasi</a></li>
+      <li><a href="profile-programmer.html">Profil Programmer</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section with Image Background -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Kontak eL Hotel</h1>
+      <p>Hubungi kami untuk informasi lebih lanjut atau pemesanan.</p>
+    </div>
+  </header>
+
+  <!-- Information Section -->
+  <section class="info-section">
+    <div class="container">
+      <h2>Kontak Kami</h2>
+      <ul class="contact-info">
+        <li><strong>Telepon:</strong> (021) 12345678</li>
+        <li><strong>Alamat:</strong> Jl. SuperEL No. 88, Batam</li>
+      </ul>
+      
+      <!-- Tombol WhatsApp dan Email berdampingan -->
+      <div class="contact-buttons">
+        <a href="https://wa.me/6289668540207?text=Hallo%20eL%20Hotel%2C%20saya%20ingin%20bertanya" class="btn-primary" target="_blank">Hubungi WhatsApp</a>
+        <a href="mailto:info@elhotel.co.id?subject=Pertanyaan%20tentang%20eL%20Hotel&body=Halo%2C%20saya%20ingin%20bertanya%20lebih%20lanjut%20tentang%20eL%20Hotel" class="btn-primary">Kirim Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 eL Hotel. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
